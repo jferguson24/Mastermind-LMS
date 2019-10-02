@@ -1,16 +1,16 @@
 package com.ss.lms.entities;
 
-public class EntityBookCopies {
+public class EntityBookCopy {
 
 	Integer bookId;
 	Integer branchId;
 	Integer noOfCopies;
 	
-	public EntityBookCopies() {
+	public EntityBookCopy() {
 		
 	}
 	
-	public EntityBookCopies(Integer bookId, Integer branchId, Integer noOfCopies) {
+	public EntityBookCopy(Integer bookId, Integer branchId, Integer noOfCopies) {
 		this.bookId = bookId;
 		this.branchId = branchId;
 		this.noOfCopies = noOfCopies;

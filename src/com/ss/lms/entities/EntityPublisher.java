@@ -1,16 +1,16 @@
 package com.ss.lms.entities;
 
-public class PublisherEntity {
+public class EntityPublisher {
 
 	private Integer branchId;
 	private String branchName;
 	private String branchAddress;
 	
-	public PublisherEntity() {
+	public EntityPublisher() {
 		
 	}
 	
-	public PublisherEntity(Integer branchId, String branchName, String branchAddress) {
+	public EntityPublisher(Integer branchId, String branchName, String branchAddress) {
 		this.branchId = branchId;
 		this.branchName = branchName;
 		this.branchAddress = branchAddress;

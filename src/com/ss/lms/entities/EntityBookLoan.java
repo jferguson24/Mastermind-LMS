@@ -2,7 +2,7 @@ package com.ss.lms.entities;
 
 import java.sql.Date;
 
-public class BookLoansEntity {
+public class EntityBookLoan {
 	
 	Integer bookId;
 	Integer branchId;
@@ -10,11 +10,11 @@ public class BookLoansEntity {
 	Date dateOut;
 	Date dueDate;
 	
-	public BookLoansEntity() {
+	public EntityBookLoan() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public BookLoansEntity(Integer bookId, Integer branchId, Integer cardNo,
+	public EntityBookLoan(Integer bookId, Integer branchId, Integer cardNo,
 			Date dateOut,Date dueDate) {
 		this.bookId = bookId;
 		this.branchId = branchId;

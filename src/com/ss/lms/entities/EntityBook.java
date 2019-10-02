@@ -1,17 +1,17 @@
 package com.ss.lms.entities;
 
-public class BookEntity {
+public class EntityBook {
 	
 	private Integer bookId;
 	private String title;
 	private Integer authorId;
 	private Integer publisherId;
 	
-	public BookEntity() {
+	public EntityBook() {
 		
 	}
 	
-	public BookEntity(Integer bookId, String title, Integer authorId, Integer publisherId) {
+	public EntityBook(Integer bookId, String title, Integer authorId, Integer publisherId) {
 		this.bookId = bookId;
 		this.title = title;
 		this.authorId = authorId;

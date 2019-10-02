@@ -1,15 +1,15 @@
 package com.ss.lms.entities;
 
-public class LibraryBranchEntity {
+public class EntityLibraryBranch {
 	
 	Integer publisherId;
 	String publisherName;
 	String publisherAddress;
 	String publisherPhone;
 	
-	public LibraryBranchEntity() {}
+	public EntityLibraryBranch() {}
 	
-	public LibraryBranchEntity(Integer publisherId, String publisher, 
+	public EntityLibraryBranch(Integer publisherId, String publisher, 
 			String publisherAddress, String publisherPhone) {
 		
 	}
