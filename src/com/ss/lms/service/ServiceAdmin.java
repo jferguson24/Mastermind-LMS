@@ -21,13 +21,13 @@ public class ServiceAdmin
 	public void createAuthor(EntityAuthor author) 
 	{}
 	
-	public void createPublisher(EntityLibraryBranch publisher) 
+	public void createPublisher(EntityPublisher entityPublisher) 
 	{}
 	
 	public void createBook(EntityBook book) 
 	{}
 
-	public void createLibraryBranch(EntityPublisher libraryBranch) 
+	public void createLibraryBranch(EntityLibraryBranch userLibraryBranch) 
 	{}
 
 	public void createBorrower(EntityBorrower borrower) 
