@@ -17,22 +17,23 @@ public class ServiceAdmin
 	 * ALL CREATE OPERATIONS
 	 * 
 	 *************************************************/
-	public void createAuthor() 
+
+	public void createAuthor(EntityAuthor author) 
 	{}
 	
-	public void createPublisher() 
+	public void createPublisher(EntityLibraryBranch publisher) 
 	{}
 	
-	public void createBook() 
+	public void createBook(EntityBook book) 
 	{}
 
-	public void createLibraryBranch() 
+	public void createLibraryBranch(EntityPublisher libraryBranch) 
 	{}
 
-	public void createBorrower() 
+	public void createBorrower(EntityBorrower borrower) 
 	{}
 
-	public void createBookLoan() 
+	public void createBookLoan(EntityBookLoan bookLoan) 
 	{}
 	
 	/*************************************************
@@ -46,7 +47,7 @@ public class ServiceAdmin
 		return null;
 	}
 	
-	public ArrayList<EntityPublisher> readPublisher(EntityPublisher publisher) 
+	public ArrayList<EntityLibraryBranch> readPublisher(EntityLibraryBranch publisher) 
 	{
 		return null;
 	}
@@ -56,7 +57,7 @@ public class ServiceAdmin
 		return null;
 	}
 	
-	public ArrayList<EntityLibraryBranch> readLibraryBranch(EntityLibraryBranch libraryBranch) 
+	public ArrayList<EntityPublisher> readLibraryBranch(EntityPublisher libraryBranch) 
 	{
 		return null;
 	}
@@ -76,14 +77,47 @@ public class ServiceAdmin
 	 * ALL UPDATE OPERATIONS
 	 * 
 	 *************************************************/
+	
+	public void updateAuthor(EntityAuthor author) 
+	{}
+	
+	public void updatePublisher(EntityLibraryBranch publisher) 
+	{}
+	
+	public void updateBook(EntityBook book) 
+	{}
 
+	public void updateLibraryBranch(EntityPublisher libraryBranch) 
+	{}
+
+	public void updateBorrower(EntityBorrower borrower) 
+	{}
+
+	public void updateBookLoan(EntityBookLoan bookLoan) 
+	{}
+	
+	
 	/*************************************************
 	 * 
 	 * ALL DELETE OPERATIONS
 	 * 
 	 *************************************************/
 	
+	public void deleteAuthor(EntityAuthor author) 
+	{}
 	
+	public void deletePublisher(EntityLibraryBranch publisher) 
+	{}
 	
-	
+	public void deleteBook(EntityBook book) 
+	{}
+
+	public void deleteLibraryBranch(EntityPublisher libraryBranch) 
+	{}
+
+	public void deleteBorrower(EntityBorrower borrower) 
+	{}
+
+	public void deleteBookLoan(EntityBookLoan bookLoan) 
+	{}
 }
