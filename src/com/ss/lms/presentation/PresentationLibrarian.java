@@ -39,9 +39,53 @@ public class PresentationLibrarian {
 	}
 	
 	public void branches() {
-		
-		System.out.println("Choose your branch:");
-		//TODO getBranches function
-		System.out.println("Enter your branch id:");
+		while(true) {
+			System.out.println("1) Choose your branch:");
+			//TODO getBranches function
+			System.out.println("2) Enter your branch id:");
+			String input = scanner.nextLine();
+			boolean check = false;
+			while (check == false) {
+				switch(input) {
+				case "1":
+					check = true;
+					break;
+				case "2":
+					check = true;
+					break;
+				case "i":
+					check = true;
+					return;
+				default:
+					System.out.println("Invalid Input.");
+				}
+			}
+		}
 	}
+	
+	public void branchOptions() {
+		while(true) {
+			System.out.println("1) Update the details of the Library");
+			System.out.println("2) Add copies of Book to the Branch");
+			System.out.println("3) Quit to previous");
+			String input = scanner.nextLine();
+			boolean check = false;
+			while (check == false) {
+				switch(input) {
+				case "1":
+					//TODO call updateLibrary() function
+					check = true;
+					break;
+				case "2":
+					//TODO call addCopies() function
+					check = true;
+					break;
+				case "3":
+					return;
+				}
+			}
+		}
+	}
+	
+	
 }
