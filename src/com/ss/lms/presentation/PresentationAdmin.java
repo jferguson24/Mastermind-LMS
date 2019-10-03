@@ -5,6 +5,8 @@ import java.util.Scanner;
 import com.ss.lms.entities.*;
 import com.ss.lms.service.ServiceAdmin;
 
+import java.sql.Date;
+
 public class PresentationAdmin 
 {
 	Scanner scanner;
@@ -46,201 +48,90 @@ public class PresentationAdmin
 				{
 				case "1": // Authors table
 					System.out.println("Authors table selected");
-					EntityAuthor userAuthor = new EntityAuthor();
+					EntityAuthor userAuthor = createEntityAuthor("Note: Enter \"-1\" for automatic primary key generation.");
 					
-					// Getting ID
-					System.out.println("Note: Enter \"-1\" for automatic author ID.");
-					allIntegerInput = getIntegerFieldFromUser("Author ID");
-					if(allIntegerInput == Integer.MIN_VALUE) 
+					// the user quit somewhere in the process
+					if(userAuthor == null) 
 					{
 						break;
 					}
-					userAuthor.setAuthorId(allIntegerInput);
 					
-					// Getting name
-					allStringInput.setLength(0); // empty the buffer before input
-					allStringInput.append(getStringFieldFromUser("Author Name"));
-					if("quit".equals(allStringInput.toString())) 
-					{
-						break;
-					}
-					userAuthor.setAuthorName(allStringInput.toString());
-					
+					// TODO consider returning a boolean to let the user know the operation was successful or not
 					// create entity
 					admin.createAuthor(userAuthor);
 					break;
+					
 				case "2": // Publishers table
 					System.out.println("Publishers table selected");
-					EntityPublisher userPublisher = new EntityPublisher();
 					
-					// Getting ID
-					System.out.println("Note: Enter \"-1\" for automatic primary key generation.");
-					allIntegerInput = getIntegerFieldFromUser("Publisher ID");
-					if(allIntegerInput == Integer.MIN_VALUE) 
+					EntityPublisher userPublisher = createEntityPublisher("Note: Enter \"-1\" for automatic primary key generation.");
+
+					// the user quit somewhere in the process
+					if(userPublisher == null) 
 					{
 						break;
 					}
-					userPublisher.setPublisherId(allIntegerInput);
-					
-					// Getting name
-					allStringInput.setLength(0); // empty the buffer before input
-					allStringInput.append(getStringFieldFromUser("Publisher Name"));
-					if("quit".equals(allStringInput.toString())) 
-					{
-						break;
-					}
-					userPublisher.setPublisherName(allStringInput.toString());
-					
-					// Getting Address
-					allStringInput.setLength(0); // empty the buffer before input
-					allStringInput.append(getStringFieldFromUser("Publisher Address"));
-					if("quit".equals(allStringInput.toString())) 
-					{
-						break;
-					}
-					userPublisher.setPublisherAddress(allStringInput.toString());
-					
-					// Getting Phone
-					allStringInput.setLength(0); // empty the buffer before input
-					allStringInput.append(getStringFieldFromUser("Publisher Phone"));
-					if("quit".equals(allStringInput.toString())) 
-					{
-						break;
-					}
-					userPublisher.setPublisherPhone(allStringInput.toString());
-					
+
+					// TODO consider returning a boolean to let the user know the operation was successful or not
 					// create entity
 					admin.createPublisher(userPublisher);
 					break;
+					
 				case "3": // Books table
 					System.out.println("Books table selected");
-					EntityBook userBook = new EntityBook();
 					
-					// Getting ID
-					System.out.println("Note: Enter \"-1\" for automatic primary key generation.");
-					allIntegerInput = getIntegerFieldFromUser("Book ID");
-					if(allIntegerInput == Integer.MIN_VALUE) 
+					EntityBook userBook = createEntityBook("Note: Enter \"-1\" for automatic primary key generation.");
+					
+					// the user quit somewhere in the process
+					if(userBook == null) 
 					{
 						break;
 					}
-					userBook.setBookId(allIntegerInput);
 					
-					// Getting name
-					allStringInput.setLength(0); // empty the buffer before input
-					allStringInput.append(getStringFieldFromUser("Book Name"));
-					if("quit".equals(allStringInput.toString())) 
-					{
-						break;
-					}
-					userBook.setTitle(allStringInput.toString());
-					
-					// Getting author ID
-					allIntegerInput = getIntegerFieldFromUser("Author ID");
-					if(allIntegerInput == Integer.MIN_VALUE) 
-					{
-						break;
-					}
-					userBook.setAuthorId(allIntegerInput);
-					
-					// Getting publisher ID
-					allIntegerInput = getIntegerFieldFromUser("Publisher ID");
-					if(allIntegerInput == Integer.MIN_VALUE) 
-					{
-						break;
-					}
-					userBook.setPubisherId(allIntegerInput);
-
+					// TODO consider returning a boolean to let the user know the operation was successful or not
 					// create entity
 					admin.createBook(userBook);
 					break;
 				case "4": // Library Branches table
 					System.out.println("Library Branches table selected");
-					EntityLibraryBranch userLibraryBranch = new EntityLibraryBranch();
+					EntityLibraryBranch userLibraryBranch = createEntityLibraryBranch("Note: Enter \"-1\" for automatic primary key generation.");
 					
-					// Getting ID
-					System.out.println("Note: Enter \"-1\" for automatic primary key generation.");
-					allIntegerInput = getIntegerFieldFromUser("Library Branch ID");
-					if(allIntegerInput == Integer.MIN_VALUE) 
+					// the user quit somewhere in the process
+					if(userLibraryBranch == null) 
 					{
 						break;
 					}
-					userLibraryBranch.setBranchId(allIntegerInput);
 					
-					// Getting name
-					allStringInput.setLength(0); // empty the buffer before input
-					allStringInput.append(getStringFieldFromUser("Library Branch Name"));
-					if("quit".equals(allStringInput.toString())) 
-					{
-						break;
-					}
-					userLibraryBranch.setBranchName(allStringInput.toString());
-					
-					// Getting address
-					allStringInput.setLength(0); // empty the buffer before input
-					allStringInput.append(getStringFieldFromUser("Library Branch Address"));
-					if("quit".equals(allStringInput.toString())) 
-					{
-						break;
-					}
-					userLibraryBranch.setBranchAddress(allStringInput.toString());
-					
+					// TODO consider returning a boolean to let the user know the operation was successful or not
 					// create entity
 					admin.createLibraryBranch(userLibraryBranch);
-					
 					break;
+					
 				case "5": // Borrower table
 					System.out.println("Borrowers table selected");
-					EntityBorrower userBorrower= new EntityBorrower();
+					EntityBorrower userBorrower= createEntityBorrower("Note: Enter \"-1\" for automatic primary key generation.");
 					
-					// Getting ID
-					System.out.println("Note: Enter \"-1\" for automatic primary key generation.");
-					allIntegerInput = getIntegerFieldFromUser("Borrower Card Number");
-					if(allIntegerInput == Integer.MIN_VALUE) 
+					// the user quit somewhere in the process
+					if(userBorrower == null) 
 					{
 						break;
 					}
-					userBorrower.setCardNo(allIntegerInput);
-					
-					// Getting name
-					allStringInput.setLength(0); // empty the buffer before input
-					allStringInput.append(getStringFieldFromUser("Borrower Name"));
-					if("quit".equals(allStringInput.toString())) 
-					{
-						break;
-					}
-					userBorrower.setName(allStringInput.toString());
-					
-					// Getting address
-					allStringInput.setLength(0); // empty the buffer before input
-					allStringInput.append(getStringFieldFromUser("Borrower Address"));
-					if("quit".equals(allStringInput.toString())) 
-					{
-						break;
-					}
-					userBorrower.setAddress(allStringInput.toString());
-					
-					// Getting phone number
-					allStringInput.setLength(0); // empty the buffer before input
-					allStringInput.append(getStringFieldFromUser("Borrower Phone Number"));
-					if("quit".equals(allStringInput.toString())) 
-					{
-						break;
-					}
-					userBorrower.setPhone(allStringInput.toString());
-					
+
+					// TODO consider returning a boolean to let the user know the operation was successful or not
 					// create entity
 					admin.createBorrower(userBorrower);
-					
 					break;
+					
 				case "6": // Book Loans table
 					System.out.println("Book Loans table selected");
-					System.out.println("Admin cannot create a Book Loan.\nExiting to table selection");
-					
+					System.out.println("Admin cannot create a Book Loan.\nQuitting to table selection");
 					break;
-				case " 0": // return to operation select
+					
+				case "0": // return to operation select
 					break;
 				}
-				break;
+				break; // once operation is done, return to operation select
+				
 			case "2": // READ operation
 				System.out.println("Read operation selected.");
 				tableSelection = selectTable();
@@ -248,6 +139,17 @@ public class PresentationAdmin
 				switch(tableSelection) 
 				{
 				case "1": // Authors table
+					System.out.println("Authors table selected");
+					EntityAuthor userAuthor = createEntityAuthor("Note: Enter N/A if you aren't concerned with the value of a field");
+					
+					// the user quit somewhere in the process
+					if(userAuthor == null) 
+					{
+						break;
+					}
+					
+					admin.updateAuthor(userAuthor);
+					
 					break;
 				case "2": // Publishers table
 					break;
@@ -314,30 +216,250 @@ public class PresentationAdmin
 		while(true);
 	}
 	
-	// TODO move code from create switch to here and call these funtions throughout
+	// TODO document these functions properly
 	private EntityAuthor createEntityAuthor(String note) 
 	{
-		return null;
+		EntityAuthor userAuthor = new EntityAuthor();
+		StringBuffer allStringInput = new StringBuffer();
+		Integer allIntegerInput;
+		
+		System.out.println("\n" + note);
+		// Getting ID
+		allIntegerInput = getIntegerFieldFromUser("Author ID");
+		if(allIntegerInput == Integer.MIN_VALUE) 
+		{
+			return null; 
+		}
+		userAuthor.setAuthorId(allIntegerInput);
+		
+		// Getting name
+		allStringInput.setLength(0); // empty the buffer before input
+		allStringInput.append(getStringFieldFromUser("Author Name"));
+		if("quit".equals(allStringInput.toString())) 
+		{
+			return null;
+		}
+		userAuthor.setAuthorName(allStringInput.toString());
+		
+		return userAuthor;
 	}
 	
 	private EntityPublisher createEntityPublisher(String note) 
 	{
-		return null;
+		EntityPublisher userPublisher = new EntityPublisher();
+		StringBuffer allStringInput = new StringBuffer();
+		Integer allIntegerInput;
+
+		System.out.println("\n" + note);
+		// Getting ID
+		allIntegerInput = getIntegerFieldFromUser("Publisher ID");
+		if(allIntegerInput == Integer.MIN_VALUE) 
+		{
+			return null;
+		}
+		userPublisher.setPublisherId(allIntegerInput);
+		
+		// Getting name
+		allStringInput.setLength(0); // empty the buffer before input
+		allStringInput.append(getStringFieldFromUser("Publisher Name"));
+		if("quit".equals(allStringInput.toString())) 
+		{
+			return null;
+		}
+		userPublisher.setPublisherName(allStringInput.toString());
+		
+		// Getting Address
+		allStringInput.setLength(0); // empty the buffer before input
+		allStringInput.append(getStringFieldFromUser("Publisher Address"));
+		if("quit".equals(allStringInput.toString())) 
+		{
+			return null;
+		}
+		userPublisher.setPublisherAddress(allStringInput.toString());
+		
+		// Getting Phone
+		allStringInput.setLength(0); // empty the buffer before input
+		allStringInput.append(getStringFieldFromUser("Publisher Phone"));
+		if("quit".equals(allStringInput.toString())) 
+		{
+			return null;
+		}
+		userPublisher.setPublisherPhone(allStringInput.toString());
+		
+		return userPublisher;
 	}
 	
 	private EntityBook createEntityBook(String note) 
 	{
-		return null;
+		EntityBook userBook = new EntityBook();
+		StringBuffer allStringInput = new StringBuffer();
+		Integer allIntegerInput;
+		
+		System.out.println("\n" + note);
+		// Getting ID
+		allIntegerInput = getIntegerFieldFromUser("Book ID");
+		if(allIntegerInput == Integer.MIN_VALUE) 
+		{
+			return null;
+		}
+		userBook.setBookId(allIntegerInput);
+		
+		// Getting name
+		allStringInput.setLength(0); // empty the buffer before input
+		allStringInput.append(getStringFieldFromUser("Book Name"));
+		if("quit".equals(allStringInput.toString())) 
+		{
+			return null;
+		}
+		userBook.setTitle(allStringInput.toString());
+		
+		// Getting author ID
+		allIntegerInput = getIntegerFieldFromUser("Author ID");
+		if(allIntegerInput == Integer.MIN_VALUE) 
+		{
+			return null;
+		}
+		userBook.setAuthorId(allIntegerInput);
+		
+		// Getting publisher ID
+		allIntegerInput = getIntegerFieldFromUser("Publisher ID");
+		if(allIntegerInput == Integer.MIN_VALUE) 
+		{
+			return null;
+		}
+		userBook.setPubisherId(allIntegerInput);
+		
+		return userBook;
 	}
 	
-	private EntityAuthor createEntityLibraryBranch(String note) 
+	private EntityLibraryBranch createEntityLibraryBranch(String note) 
 	{
-		return null;
+		EntityLibraryBranch userLibraryBranch = new EntityLibraryBranch();
+		StringBuffer allStringInput = new StringBuffer();
+		Integer allIntegerInput;
+		
+		System.out.println("\n" + note);
+		// Getting ID
+		allIntegerInput = getIntegerFieldFromUser("Library Branch ID");
+		if(allIntegerInput == Integer.MIN_VALUE) 
+		{
+			return null;
+		}
+		userLibraryBranch.setBranchId(allIntegerInput);
+		
+		// Getting name
+		allStringInput.setLength(0); // empty the buffer before input
+		allStringInput.append(getStringFieldFromUser("Library Branch Name"));
+		if("quit".equals(allStringInput.toString())) 
+		{
+			return null;
+		}
+		userLibraryBranch.setBranchName(allStringInput.toString());
+		
+		// Getting address
+		allStringInput.setLength(0); // empty the buffer before input
+		allStringInput.append(getStringFieldFromUser("Library Branch Address"));
+		if("quit".equals(allStringInput.toString())) 
+		{
+			return null;
+		}
+		userLibraryBranch.setBranchAddress(allStringInput.toString());
+		
+		return userLibraryBranch;
 	}
 
 	private EntityBorrower createEntityBorrower(String note) 
 	{
-		return null;
+		EntityBorrower userBorrower= new EntityBorrower();
+		StringBuffer allStringInput = new StringBuffer();
+		Integer allIntegerInput;
+		
+		System.out.println("/n" + note);
+		// Getting ID
+		System.out.println("Note: Enter \"-1\" for automatic primary key generation.");
+		allIntegerInput = getIntegerFieldFromUser("Borrower Card Number");
+		if(allIntegerInput == Integer.MIN_VALUE) 
+		{
+			return null;
+		}
+		userBorrower.setCardNo(allIntegerInput);
+		
+		// Getting name
+		allStringInput.setLength(0); // empty the buffer before input
+		allStringInput.append(getStringFieldFromUser("Borrower Name"));
+		if("quit".equals(allStringInput.toString())) 
+		{
+			return null;
+		}
+		userBorrower.setName(allStringInput.toString());
+		
+		// Getting address
+		allStringInput.setLength(0); // empty the buffer before input
+		allStringInput.append(getStringFieldFromUser("Borrower Address"));
+		if("quit".equals(allStringInput.toString())) 
+		{
+			return null;
+		}
+		userBorrower.setAddress(allStringInput.toString());
+		
+		// Getting phone number
+		allStringInput.setLength(0); // empty the buffer before input
+		allStringInput.append(getStringFieldFromUser("Borrower Phone Number"));
+		if("quit".equals(allStringInput.toString())) 
+		{
+			return null;
+		}
+		userBorrower.setPhone(allStringInput.toString());
+		
+		return userBorrower;
+	}
+	
+	private EntityBookLoan createEntityBookLoan(String note) 
+	{
+		EntityBookLoan userBookLoan = new EntityBookLoan();
+		StringBuffer allStringInput = new StringBuffer();
+		Integer allIntegerInput;
+		
+		System.out.println("\n" + note);
+		// Getting book ID
+		allIntegerInput = getIntegerFieldFromUser("Book ID");
+		if(allIntegerInput == Integer.MIN_VALUE) 
+		{
+			return null;
+		}
+		userBookLoan.setBookId(allIntegerInput);
+		
+		// Getting Branch ID
+		allIntegerInput = getIntegerFieldFromUser("Branch ID");
+		if(allIntegerInput == Integer.MIN_VALUE) 
+		{
+			return null;
+		}
+		userBookLoan.setBranchId(allIntegerInput);
+		
+		// Getting card number
+		allIntegerInput = getIntegerFieldFromUser("Card Number");
+		if(allIntegerInput == Integer.MIN_VALUE) 
+		{
+			return null;
+		}
+		userBookLoan.setCardNo(allIntegerInput);
+		
+		// cannot change dateOut
+		// TODO properly handle not changing the date
+//		userBookLoan.setDateOut(java.sql.Date.);
+		
+		// Getting due date
+		allStringInput.setLength(0); // empty the buffer before input
+		allStringInput.append(getStringFieldFromUser("Due Date (YYYY-MM-DD)"));
+		if("quit".equals(allStringInput.toString())) 
+		{
+			return null;
+		}
+		// TODO proper date input checking
+		userBookLoan.setDueDate(Date.valueOf(allStringInput.toString()));
+		
+		return userBookLoan;
 	}
 	
 	/*
@@ -362,6 +484,7 @@ public class PresentationAdmin
 			}
 		}
 	}
+	
 	/*
 	 * This function is for getting String values for entity fields
 	 * */
