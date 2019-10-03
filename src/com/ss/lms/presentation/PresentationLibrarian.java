@@ -1,12 +1,15 @@
 package com.ss.lms.presentation;
 
 import java.util.Scanner;
+import com.ss.lms.service.ServiceAdmin;
 
 public class PresentationLibrarian {
 
 	private static Scanner scanner;
+	private ServiceAdmin service;
 
 	public PresentationLibrarian() {
+		service = new ServiceAdmin();
 		scanner = new Scanner( System.in );
 		librarianMenu();
 	}
@@ -36,7 +39,7 @@ public class PresentationLibrarian {
 	}
 	
 	public void branches() {
-		String[][] str;
+		
 		System.out.println("Choose your branch:");
 		//TODO getBranches function
 		System.out.println("Enter your branch id:");
