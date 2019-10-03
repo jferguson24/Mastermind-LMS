@@ -6,7 +6,7 @@ package com.ss.lms.service;
 
 import java.util.ArrayList;
 
-import com.ss.lms.dataaccess.*;
+import com.ss.lms.dataaccess.DataAccessLibrarian;
 import com.ss.lms.entities.*;
 
 /**
@@ -21,6 +21,9 @@ public class ServiceLibrarian {
 		DAOlib = new DataAccessLibrarian();
 	}
 	
+	public void closeConnection() {
+		DAOlib.close();
+	}
 	public ArrayList<EntityLibraryBranch> getBranchEntities() {
 		return DAOlib.selectBranches();
 	}
@@ -41,11 +44,11 @@ public class ServiceLibrarian {
 	public String getAuthorName(EntityBook book) {
 		return DAOlib.selectAuthorName(book);
 	}
-	public int getNumberOfCopies(int bookId, int branchId) {
-		return DAOlib.selectNumberOfCopies(bookId, branchId); 
+	public int getNumberOfCopies(EntityBook book, int branchId) {
+		return DAOlib.selectNumberOfCopies(book, branchId); 
 	}
 
-	public boolean changeCopies(int bookId, int branchId, int numCopies) {
-		return DAOlib.updateCopies(bookId, branchId, numCopies);
+	public boolean changeCopies(EntityBook book, int branchId, int numCopies) {
+		return DAOlib.updateCopies(book, branchId, numCopies);
 	}
 }

@@ -17,7 +17,13 @@ public class PresentationLibrarian {
 	public PresentationLibrarian() {
 		libService = new ServiceLibrarian();
 		scanner = new Scanner( System.in );
+		try {
 		librarianMenu();
+		}
+		finally {
+			libService.closeConnection();
+			System.out.println("Connection Closed.");
+		}
 	}
 	//
 	//Displays librarians choices and gets the user input
@@ -153,6 +159,7 @@ public class PresentationLibrarian {
 		while(true) {
 			ArrayList<EntityBook> copies = libService.getBookEntities(branchId);
 
+			//Choosing which book you want to add copies of
 			System.out.println("Choose your Book:");
 			int i = 1;
 			for(EntityBook book : copies) {
@@ -160,33 +167,37 @@ public class PresentationLibrarian {
 				i++;
 			}
 			System.out.println(i + ") Quit to previous");
-//			Stream<String> branchStream = Arrays.stream(branches);
-//			branchStream.forEach((str) -> System.out.println(str);
 			System.out.println("Enter your book:");
+			
+			//Getting a valid integer book ID
 			int bookId = 0;
 			while(!scanner.hasNextInt()) {
 				System.out.println("Please enter a valid Integer.");
 				System.out.print("Enter your book: ");
 			    scanner.next();
 			}
-
 			bookId = scanner.nextInt();
 			scanner.nextLine();
-			System.out.println("BookId: " + bookId);
-			System.out.println("Size: " + copies.size());
 			
+			//Creating a book with the information given to pass the supporting functions
+
+			//Checking if the entered value is the quit option
 			if(bookId == i) {
 				return;
 			}
+			//If the entered value is within the available id's then it will go on to add copies
 			if(bookId <= copies.size()) {
-				addCopies(copies.get(bookId-1).getBookId(), branchId);
+				addCopies(copies.get(bookId-1), branchId);
 			}
 		}
 	}
-	public void addCopies(int bookId, int branchId) {
-		System.out.println("Existing number of books: " + libService.getNumberOfCopies(bookId, branchId));
+	
+	//addCopies gets the new number of copies desired and calls the service to update the database
+	public void addCopies(EntityBook book, int branchId) {
+		System.out.println("Existing number of books: " + libService.getNumberOfCopies(book, branchId));
 		System.out.println("Enter new number of copies: ");
 		int numCopies= 0;
+		//Gets a valid integer for the new number of copies
 		while(!scanner.hasNextInt()) {
 			System.out.println("Please enter a valid Integer.");
 			System.out.print("Enter your book: ");
@@ -195,7 +206,7 @@ public class PresentationLibrarian {
 
 		numCopies = scanner.nextInt();
 		scanner.nextLine();
-		libService.changeCopies(bookId, branchId, numCopies);
+		libService.changeCopies(book, branchId, numCopies);
 		
 	}
 	

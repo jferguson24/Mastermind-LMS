@@ -28,7 +28,7 @@ public class DataAccessLibrarian {
 			}catch(Exception e){ System.out.println(e);} 
 	}
 	
-	public void DALclose() {
+	public void close() {
 		try {
 			con.close();
 		} catch (SQLException e) {
@@ -87,7 +87,7 @@ public class DataAccessLibrarian {
 	
 			return true;
 		} catch (SQLException e) {
-			System.out.println("Invalid Query");
+			System.out.println("Invalid update Query");
 		} 
 		return false;
 	}
@@ -103,7 +103,7 @@ public class DataAccessLibrarian {
 			}		
 			return bookArray;
 		} catch (SQLException e) {
-			System.out.println("Invalid Query");
+			System.out.println("Invalid select all books Query");
 		} 
 		return bookArray;
 	}
@@ -113,32 +113,34 @@ public class DataAccessLibrarian {
 		Statement stmt2;
 		try {
 			stmt2 = con.createStatement();
-			ResultSet author=stmt2.executeQuery("select authorName from tbl_book, tbl_author where tbl_book.authId = tbl_author.authorId and bookId = " + book.getAuthorId());  
+			ResultSet author=stmt2.executeQuery("select authorName from tbl_book, tbl_author"
+										+ " where tbl_book.authId = tbl_author.authorId and bookId = "
+										+ book.getAuthorId());  
 			author.next();
 			authorName = new String(author.getString(1));
 			return authorName;
 		} catch (SQLException e) {
-			System.out.println("Invalid Query");
+			System.out.println("Invalid select authorName Query");
 		} 
 		return authorName;
 	}
 	
-	public int selectNumberOfCopies(int bookId, int branchId) {
+	public int selectNumberOfCopies(EntityBook book, int branchId) {
 		int numCopies = 0;
 		Statement stmt2;
 		try {
 			stmt2 = con.createStatement();
-			ResultSet noOfCopies = stmt2.executeQuery("select noOfCopies from tbl_book_copies where branchId =" + branchId + " and bookId = " + bookId);  
+			ResultSet noOfCopies = stmt2.executeQuery("select noOfCopies from tbl_book_copies where branchId =" + branchId + " and bookId = " + book.getBookId());  
 			noOfCopies.next();
 			numCopies = noOfCopies.getInt(1);
 			return numCopies;
 		} catch (SQLException e) {
-			System.out.println("Invalid Query");
+			System.out.println("Invalid select noOfCopies Query");
 		} 
 		return numCopies;
 	}
 
-	public boolean updateCopies(int bookId, int branchId, int numCopies) {
+	public boolean updateCopies(EntityBook book, int branchId, int numCopies) {
 
 		Statement update;
 		try {
@@ -146,11 +148,11 @@ public class DataAccessLibrarian {
 			update.executeUpdate("update tbl_book_copies set noOfCopies = \""
 									+ numCopies + "\" where branchId = "
 									+ branchId +" and bookId = "
-									+ bookId + ";");
+									+ book.getBookId() + ";");
 	
 			return true;
 		} catch (SQLException e) {
-			System.out.println("Invalid Query");
+			System.out.println("Invalid update noOfCopies Query");
 		} 
 		return false;
 	}
