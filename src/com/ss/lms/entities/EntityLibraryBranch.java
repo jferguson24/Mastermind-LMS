@@ -1,72 +1,62 @@
 package com.ss.lms.entities;
 
 public class EntityLibraryBranch {
+
+	private Integer branchId;
+	private String branchName;
+	private String branchAddress;
 	
-	Integer publisherId;
-	String publisherName;
-	String publisherAddress;
-	String publisherPhone;
-	
-	public EntityLibraryBranch() {}
-	
-	public EntityLibraryBranch(Integer publisherId, String publisher, 
-			String publisherAddress, String publisherPhone) {
+	public EntityLibraryBranch() {
 		
 	}
-
-	/**
-	 * @return the publisherId
-	 */
-	public Integer getPublisherId() {
-		return publisherId;
+	
+	public EntityLibraryBranch(Integer branchId, String branchName, String branchAddress) {
+		this.branchId = branchId;
+		this.branchName = branchName;
+		this.branchAddress = branchAddress;
 	}
 
 	/**
-	 * @param publisherId the publisherId to set
+	 * @return the branchId
 	 */
-	public void setPublisherId(Integer publisherId) {
-		this.publisherId = publisherId;
+	public Integer getBranchId() {
+		return branchId;
 	}
 
 	/**
-	 * @return the publisherName
+	 * @param branchId the branchId to set
 	 */
-	public String getPublisherName() {
-		return publisherName;
+	public void setBranchId(Integer branchId) {
+		this.branchId = branchId;
 	}
 
 	/**
-	 * @param publisherName the publisherName to set
+	 * @return the branchName
 	 */
-	public void setPublisherName(String publisherName) {
-		this.publisherName = publisherName;
+	public String getBranchName() {
+		return branchName;
 	}
 
 	/**
-	 * @return the publisherAddress
+	 * @param branchName the branchName to set
 	 */
-	public String getPublisherAddress() {
-		return publisherAddress;
+	public void setBranchName(String branchName) {
+		this.branchName = branchName;
 	}
 
 	/**
-	 * @param publisherAddress the publisherAddress to set
+	 * @return the branchAddress
 	 */
-	public void setPublisherAddress(String publisherAddress) {
-		this.publisherAddress = publisherAddress;
+	public String getBranchAddress() {
+		return branchAddress;
 	}
 
 	/**
-	 * @return the publisherPhone
+	 * @param branchAddress the branchAddress to set
 	 */
-	public String getPublisherPhone() {
-		return publisherPhone;
+	public void setBranchAddress(String branchAddress) {
+		this.branchAddress = branchAddress;
 	}
-
-	/**
-	 * @param publisherPhone the publisherPhone to set
-	 */
-	public void setPublisherPhone(String publisherPhone) {
-		this.publisherPhone = publisherPhone;
-	}
+	
+	
 }
