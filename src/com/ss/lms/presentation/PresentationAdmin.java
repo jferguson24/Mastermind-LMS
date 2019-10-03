@@ -124,11 +124,10 @@ public class PresentationAdmin
 					
 				case "6": // Book Loans table
 					System.out.println("Book Loans table selected");
-					System.out.println("Admin cannot create a Book Loan.\nQuitting to table selection");
+					System.out.println("Admin cannot create a Book Loan.\nQuitting to operation selection");
 					break;
 					
 				case "0": // return to operation select
-					break;
 				}
 				break; // once operation is done, return to operation select
 				
@@ -148,19 +147,80 @@ public class PresentationAdmin
 						break;
 					}
 					
-					admin.updateAuthor(userAuthor);
+					// read author
+					admin.readAuthor(userAuthor);
+					break;
 					
-					break;
 				case "2": // Publishers table
+					System.out.println("Publishers table selected");
+					EntityPublisher userPublisher= createEntityPublisher("Note: Enter N/A if you aren't concerned with the value of a field");
+					
+					// the user quit somewhere in the process
+					if(userPublisher == null) 
+					{
+						break;
+					}
+					
+					// read publisher
+					admin.readPublisher(userPublisher);
 					break;
+					
 				case "3": // Books table
+					System.out.println("Books table selected");
+					EntityBook userBook = createEntityBook("Note: Enter N/A if you aren't concerned with the value of a field");
+					
+					// the user quit somewhere in the process
+					if(userBook == null) 
+					{
+						break;
+					}
+					
+					// read book
+					admin.readBook(userBook);
 					break;
+					
 				case "4": // Library Branches table
+					System.out.println("Library Branches table selected");
+					EntityLibraryBranch userLibraryBranch = createEntityLibraryBranch("Note: Enter N/A if you aren't concerned with the value of a field");
+					
+					// the user quit somewhere in the process
+					if(userLibraryBranch == null) 
+					{
+						break;
+					}
+					
+					// read library branch
+					admin.readLibraryBranch(userLibraryBranch);
 					break;
+					
 				case "5": // Borrower table
+					System.out.println("Borrower table selected");
+					EntityBorrower userBorrower = createEntityBorrower("Note: Enter N/A if you aren't concerned with the value of a field");
+					
+					// the user quit somewhere in the process
+					if(userBorrower == null) 
+					{
+						break;
+					}
+					
+					// read borrower
+					admin.readBorrower(userBorrower);
 					break;
+					
 				case "6": // Book Loans table
+					System.out.println("Book Loan table selected");
+					EntityBookLoan userBookLoan= createEntityBookLoan("Note: Enter N/A if you aren't concerned with the value of a field");
+					
+					// the user quit somewhere in the process
+					if(userBookLoan == null) 
+					{
+						break;
+					}
+					
+					// read book loan
+					admin.readBookLoan(userBookLoan);
 					break;
+					
 				case "0": // return to operation select
 					continue;
 				}
@@ -172,17 +232,47 @@ public class PresentationAdmin
 				switch(tableSelection) 
 				{
 				case "1": // Authors table
+					System.out.println("Authors table selected");
+					EntityAuthor userAuthor = createEntityAuthor("Note: The value of Author ID will determine the row to be updated, the following values represent the new data to overwrite with.\nEnter N/A to leave a non primary key field as-is");
+					
+					// the user quit somewhere in the process
+					if(userAuthor == null) 
+					{
+						break;
+					}
+					
+					// TODO should be in business logic
+					if(userAuthor.getAuthorId() == Integer.MAX_VALUE) 
+					{
+						System.out.println("You cannot enter N/A for a primary key value when updating.\nReturning to table select menu");
+						break;
+					}
+					
+					// read author
+					admin.updateAuthor(userAuthor);
+					
 					break;
+					
 				case "2": // Publishers table
+					System.out.println("Publishers table selected");
 					break;
+					
 				case "3": // Books table
+					System.out.println("Books table selected");
 					break;
+					
 				case "4": // Library Branches table
+					System.out.println("Library Branches table selected");
 					break;
+					
 				case "5": // Borrower table
+					System.out.println("Borrower table selected");
 					break;
+					
 				case "6": // Book Loans table TODO only update due date.
+					System.out.println("Book Loans table selected");
 					break;
+					
 				case "0": // return to operation select
 					continue;
 				}
@@ -194,17 +284,30 @@ public class PresentationAdmin
 				switch(tableSelection) 
 				{
 				case "1": // Authors table
+					System.out.println("Authors table selected");
 					break;
+					
 				case "2": // Publishers table
+					System.out.println("Publishers table selected");
 					break;
+					
 				case "3": // Books table
+					System.out.println("Books table selected");
 					break;
+					
 				case "4": // Library Branches table
+					System.out.println("Library Branches table selected");
 					break;
+					
 				case "5": // Borrower table
+					System.out.println("Borrower table selected");
 					break;
+					
 				case "6": // Book Loans table
+					System.out.println("Book Loans table selected");
+					System.out.println("Admin cannot delete a Book Loan.\nQuitting to operation selection");
 					break;
+					
 				case "0": // return to operation select
 					continue;
 				}
@@ -473,6 +576,10 @@ public class PresentationAdmin
 			if(scanner.hasNextInt()) 
 			{
 				return scanner.nextInt();
+			}
+			else if("N/A".equals(scanner.next())) 
+			{
+				return Integer.MAX_VALUE;
 			}
 			else if("quit".equals(scanner.next())) 
 			{

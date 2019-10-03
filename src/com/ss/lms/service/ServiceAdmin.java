@@ -47,7 +47,7 @@ public class ServiceAdmin
 		return null;
 	}
 	
-	public ArrayList<EntityLibraryBranch> readPublisher(EntityLibraryBranch publisher) 
+	public ArrayList<EntityPublisher> readPublisher(EntityPublisher publisher) 
 	{
 		return null;
 	}
@@ -57,12 +57,12 @@ public class ServiceAdmin
 		return null;
 	}
 	
-	public ArrayList<EntityPublisher> readLibraryBranch(EntityPublisher libraryBranch) 
+	public ArrayList<EntityLibraryBranch> readLibraryBranch(EntityLibraryBranch libraryBranch) 
 	{
 		return null;
 	}
 	
-	public ArrayList<EntityBorrower > readBorrower(EntityBorrower borrower) 
+	public ArrayList<EntityBorrower> readBorrower(EntityBorrower borrower) 
 	{
 		return null;
 	}
