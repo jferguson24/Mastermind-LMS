@@ -157,7 +157,7 @@ public class PresentationLibrarian {
 	public void copies(int branchId) {
 		System.out.println("Pick the Book you want to add copies of, to your branch:");
 		while(true) {
-			ArrayList<EntityBook> copies = libService.getBookEntities(branchId);
+			ArrayList<EntityBook> copies = libService.getBookEntities();
 
 			//Choosing which book you want to add copies of
 			System.out.println("Choose your Book:");
@@ -194,7 +194,7 @@ public class PresentationLibrarian {
 	
 	//addCopies gets the new number of copies desired and calls the service to update the database
 	public void addCopies(EntityBook book, int branchId) {
-		System.out.println("Existing number of books: " + libService.getNumberOfCopies(book, branchId));
+		System.out.println("Existing number of books: " + libService.getNumberOfCopies(book));
 		System.out.println("Enter new number of copies: ");
 		int numCopies= 0;
 		//Gets a valid integer for the new number of copies

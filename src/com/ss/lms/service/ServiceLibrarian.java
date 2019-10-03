@@ -37,15 +37,15 @@ public class ServiceLibrarian {
 	public boolean updateLibrary(int branchId, String name, String address) {
 		return DAOlib.updateBranch(branchId, name, address);
 	}
-	public ArrayList<EntityBook> getBookEntities(int branchId) {
-		return DAOlib.selectBooks(branchId);
+	public ArrayList<EntityBook> getBookEntities() {
+		return DAOlib.selectBooks();
 	}
 	
 	public String getAuthorName(EntityBook book) {
 		return DAOlib.selectAuthorName(book);
 	}
-	public int getNumberOfCopies(EntityBook book, int branchId) {
-		return DAOlib.selectNumberOfCopies(book, branchId); 
+	public int getNumberOfCopies(EntityBook book) {
+		return DAOlib.selectNumberOfCopies(book); 
 	}
 
 	public boolean changeCopies(EntityBook book, int branchId, int numCopies) {

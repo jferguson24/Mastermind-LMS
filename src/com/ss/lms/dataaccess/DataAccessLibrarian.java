@@ -91,12 +91,12 @@ public class DataAccessLibrarian {
 		} 
 		return false;
 	}
-	public ArrayList<EntityBook> selectBooks(int branchId){
+	public ArrayList<EntityBook> selectBooks(){
 		ArrayList<EntityBook> bookArray = new ArrayList<EntityBook>();
 		Statement stmt2;
 		try {
 			stmt2 = con.createStatement();
-			ResultSet books=stmt2.executeQuery("select * from tbl_book, tbl_book_copies where tbl_book.bookId = tbl_book_copies.bookId and branchId = " + branchId);  
+			ResultSet books=stmt2.executeQuery("select * from tbl_book");  
 			while(books.next()) { 
 				EntityBook book = new EntityBook(books.getInt(1),books.getString(2),books.getInt(3),books.getInt(4));
 				bookArray.add(book); 
@@ -125,12 +125,12 @@ public class DataAccessLibrarian {
 		return authorName;
 	}
 	
-	public int selectNumberOfCopies(EntityBook book, int branchId) {
+	public int selectNumberOfCopies(EntityBook book) {
 		int numCopies = 0;
 		Statement stmt2;
 		try {
 			stmt2 = con.createStatement();
-			ResultSet noOfCopies = stmt2.executeQuery("select noOfCopies from tbl_book_copies where branchId =" + branchId + " and bookId = " + book.getBookId());  
+			ResultSet noOfCopies = stmt2.executeQuery("select noOfCopies from tbl_book_copies where bookId = " + book.getBookId());  
 			noOfCopies.next();
 			numCopies = noOfCopies.getInt(1);
 			return numCopies;
